@@ -7,7 +7,8 @@ describe('WhateLabelMD Automation Testing', function () {
         cy.wait(2500)
         cy.get('#brxe-pghmxr').click({ force: true })
         cy.get('#brxe-xsxukc').click({ force: true })
-        cy.get('#myBtn-mdl').click()
+        cy.get('#myBtn-mdl').click({force: true})
+        cy.wait(1500);
 
         //Iframe starts Now
 
@@ -123,12 +124,13 @@ describe('WhateLabelMD Automation Testing', function () {
             //Checking with Everytime
             cy.wrap(iframeBody).find('#label_input_233_0').click()
             cy.wrap(iframeBody).find('#form-pagebreak-next_135').click(); 
-            cy.wrap(iframeBody).find('#form-pagebreak-back_137').click(); 
+            cy.wrap(iframeBody).find('#form-pagebreak-back_137').click({force: true}); 
 
             //Checking with sometimes
             cy.wrap(iframeBody).find('#label_input_233_1').click()
-            cy.wrap(iframeBody).find('#form-pagebreak-next_135').click(); 
-            cy.wrap(iframeBody).find('#form-pagebreak-back_137').click();
+            cy.wrap(iframeBody).find('#form-pagebreak-next_135').click();
+            cy.wait(1000);
+            cy.wrap(iframeBody).find('#form-pagebreak-back_137').click({force: true});
 
             //checking with hardly ever
             cy.wrap(iframeBody).find('#label_input_233_2').click()
@@ -144,13 +146,38 @@ describe('WhateLabelMD Automation Testing', function () {
             cy.wrap(iframeBody).find('#label_input_235_0').click({force: true})
             cy.wrap(iframeBody).find('#form-pagebreak-next_139').click();  
             cy.wrap(iframeBody).find('#form-pagebreak-back_142').click();
-         
 
+            // 0-2 minutes after
+            cy.wrap(iframeBody).find('#label_input_235_1').click({force: true})
+            cy.wrap(iframeBody).find('#form-pagebreak-next_139').click();  
+            cy.wrap(iframeBody).find('#form-pagebreak-back_142').click();
 
+            // 2-5 minutes after
+            cy.wrap(iframeBody).find('#label_input_235_2').click({force: true})
+            cy.wrap(iframeBody).find('#form-pagebreak-next_139').click();  
+            cy.wrap(iframeBody).find('#form-pagebreak-back_142').click();
 
+            // 5 0r more minutes
+            cy.wrap(iframeBody).find('#label_input_235_3').click({force: true})
+            cy.wrap(iframeBody).find('#form-pagebreak-next_139').click();  
 
+            //Have you ever or currently have any heart problems (including stent, irregular heart beat), low blood pressure, stroke, or circulation problems?
+            cy.wrap(iframeBody).find('#label_input_236_1').should('not.be.checked')
+            cy.wrap(iframeBody).find('#label_input_236_0').click({force: true})
+            cy.wrap(iframeBody).find('#input_237').type('Yes, I have problems')
+            cy.wrap(iframeBody).find('#form-pagebreak-next_142').click();
 
+            //Please confirm that you do not have a history of heart disease
+            cy.wrap(iframeBody).find('#label_input_238_1').click({force: true})
+            cy.wrap(iframeBody).find('#label_input_238_0').should('not.be.checked')
+            cy.wrap(iframeBody).find('#input_239').type('Yes, I have some issues')
+            cy.wrap(iframeBody).find('#form-pagebreak-next_144').click();
 
+            //Choose the medicine
+            cy.wrap(iframeBody).find('#label_input_218_0').should('not.be.checked')
+            cy.wrap(iframeBody).find('#label_input_218_1').click({force: true})
+            cy.wrap(iframeBody).find('#label_input_218_2').should('not.be.checked')
+            cy.wrap(iframeBody).find('#input_42').click(); 
 
 
     }       

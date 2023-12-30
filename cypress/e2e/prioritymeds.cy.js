@@ -266,5 +266,5 @@ describe('WhateLabelMD Automation Testing', function () {
         // Usage of the custom command
         cy.getIframeBody().find('#form-pagebreak-next_218').should('be.visible').click();
 
-    }
-}
+    })
+})
